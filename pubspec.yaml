@@ -1,0 +1,29 @@
+name: achieve_daily
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - images/dollar_button.png
+    - images/dollar_button_tap.png
+    - images/heart_button.png
+    - images/heart_button_tap.png
+    - images/briefcase_button.png
+    - images/briefcase_button_tap.png
+    - images/chatbox_button.png
+    - images/chatbox_button_tap.png
+    - images/atom_button.png
+    - images/atom_button_tap.png
+    - images/settings_button.png
+    # - images/settings_button_tap.png
+    - images/facebook_button.png
+   # - images/heart_button_tap.png
+    - images/home_button.png
+  #  - images/briefcase_button_tap.png
+    - images/warning_button.png
+ #   - images/chatbox_button_tap.png
+    - images/town_button.png
+#    - images/atom_button_tap.png
