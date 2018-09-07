@@ -1,7 +1,8 @@
+import 'package:achieve_daily/app/header.dart';
 import 'package:flutter/material.dart';
 
 class Footer extends StatefulWidget {
-  Footer({Key key}) : super(key: key);
+  Footer({Key footer}) : super(key: footer);
 
   @override
   _FooterState createState() => _FooterState();
@@ -9,31 +10,13 @@ class Footer extends StatefulWidget {
 
 class _FooterState extends State<Footer> {
     String state = "default";
-    void _handleTapTown(){
-      setState((){
-        state = "town";
-      });
-    }
-    void _handleTapWarning(){
-      setState((){
-        state = "warning";
-      });
-    }
-    void _handleTapHome(){
-      setState((){
-        state = "home";
-      });
-    }
-    void _handleTapFacebook(){
-      setState((){
-        state = "facebook";
-      });
-    }
-    void _handleTapSettings(){
-      setState((){
-        state = "settings";
-      });
-    }
+    HeaderState header = new HeaderState();
+    
+  void _handleNavigationTap(String stateString) {
+    setState(() {
+      state = stateString;
+    });
+  }
 
   Widget build(BuildContext context) {
     double height = (MediaQuery.of(context).size.height * 11.25) / 100;
@@ -46,27 +29,27 @@ class _FooterState extends State<Footer> {
             Image.asset(state == "town" ? "images/town_button_tap.png" :"images/town_button.png",
               width: height,
               fit: BoxFit.contain),
-            onTap: _handleTapTown),
+              onTap: () { _handleNavigationTap("town"); }),
           GestureDetector(child:
             Image.asset(state == "warning" ? "images/warning_button_tap.png" : "images/warning_button.png",
               width: height,
               fit: BoxFit.contain),
-            onTap: _handleTapWarning),
+              onTap: () { _handleNavigationTap("warning"); }),
           GestureDetector(child:
             Image.asset(state == "home" ? "images/home_button_tap.png" : "images/home_button.png",
               width: height,
               fit: BoxFit.contain),
-            onTap: _handleTapHome),
+              onTap: () { _handleNavigationTap("home"); }),
           GestureDetector(child:
             Image.asset(state == "facebook" ? "images/facebook_button_tap.png" : "images/facebook_button.png",
               width: height,
               fit: BoxFit.contain),
-            onTap: _handleTapFacebook),
+              onTap: () { _handleNavigationTap("facebook"); }),
           GestureDetector(child:
             Image.asset(state == "settings" ? "images/settings_button_tap.png" : "images/settings_button.png",
               width: height,
               fit: BoxFit.contain),
-            onTap: _handleTapSettings),
+              onTap: () { _handleNavigationTap("settings"); }),
           ],
       )
     );

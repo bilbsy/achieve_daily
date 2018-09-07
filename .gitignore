@@ -7,3 +7,7 @@
 build/
 
 .flutter-plugins
+
+gitkraken_rsa
+
+gitkraken_rsa\.pub

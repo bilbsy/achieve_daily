@@ -4,9 +4,9 @@ import 'package:achieve_daily/app/body.dart';
 import 'package:achieve_daily/app/footer.dart';
 
 class MyApp extends StatelessWidget {
-
+  
   @override
-  Widget build(BuildContext context, [String clicked = "default"]) {
+  Widget build(BuildContext context) {
     Widget header = Header();
     Widget body = Body();
     Widget footer = Footer();
