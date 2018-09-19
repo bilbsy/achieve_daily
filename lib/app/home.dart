@@ -1,27 +1,30 @@
-import 'package:flutter/material.dart';
 import 'package:achieve_daily/app/header.dart';
+import 'package:flutter/material.dart';
 import 'package:achieve_daily/app/body.dart';
-import 'package:achieve_daily/app/footer.dart';
 
-class MyApp extends StatelessWidget {
-  
+class MyApp extends StatefulWidget {
+  @override
+  MyAppState createState() => new MyAppState();
+}
+
+class MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    Widget header = Header();
     Widget body = Body();
-    Widget footer = Footer();
+    Widget header = Header();
     
-    return new MaterialApp(      
-      home: Scaffold(
+    return new Scaffold(
+        appBar: new PreferredSize(
+          preferredSize: Size(1000.0, 1000.0),
+          child: new Card(
+            child: header
+          )),
         body: ListView(
           children: [
-            header,
-            body,
-            footer
+            body
             //ad?
           ],
         )
-      )
-    );
+      )    ;
   }
 }
