@@ -1,3 +1,4 @@
+import 'package:achieve_daily/app/App.dart';
 import 'package:achieve_daily/app/header.dart';
 import 'package:flutter/material.dart';
 import 'package:achieve_daily/app/achievements.dart';
@@ -12,24 +13,28 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
-  double height = (MediaQuery.of(context).size.height * 73.8) / 100;
-  Widget achievements = new Achievements();
-    return Scaffold(
-        body: ListView(
-          children: [
-            GetBody()
-          ],
-        )
-      );
+    Widget achievements = new Achievements();
+    return Container(
+      child: Row(
+        children: <Widget> [Icon(Icons.favorite, size: 150.0, color: Colors.purple)]
+      ),
+    );
   }
 }
 
-Widget GetBody(){
-  HeaderState homeState = new HeaderState();
+Widget getBody(){
+  AppState homeState = new AppState();
+  
   switch (homeState.state)
   {
     case "home":
-    return Home();
-    break;
+      return Home();
+      break;
+    case "achievement":
+      return Achievements();
+      break;
+    default:
+      return Home();
+      break;
   }
 }
