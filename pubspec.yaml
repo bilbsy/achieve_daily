@@ -7,6 +7,16 @@ dependencies:
 flutter:
   uses-material-design: true
   assets:
+  #Header
+    - images/settings_button.png
+    - images/settings_button_tap.png
+    - images/facebook_button.png
+    - images/facebook_button_tap.png
+    - images/home_button.png
+    - images/home_button_tap.png
+    - images/achievement_button.png
+    - images/achievement_button_tap.png
+  #achievement buttons
     - images/dollar_button.png
     - images/dollar_button_tap.png
     - images/heart_button.png
@@ -17,13 +27,3 @@ flutter:
     - images/chatbox_button_tap.png
     - images/atom_button.png
     - images/atom_button_tap.png
-    - images/settings_button.png
-    # - images/settings_button_tap.png
-    - images/facebook_button.png
-   # - images/heart_button_tap.png
-    - images/home_button.png
-  #  - images/briefcase_button_tap.png
-    - images/warning_button.png
- #   - images/chatbox_button_tap.png
-    - images/town_button.png
-#    - images/atom_button_tap.png

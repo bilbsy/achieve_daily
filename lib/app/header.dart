@@ -1,4 +1,4 @@
-import 'package:achieve_daily/app/footer.dart';
+import 'package:achieve_daily/app/App.dart';
 import 'package:flutter/material.dart';
 
 class Header extends StatefulWidget {
@@ -9,12 +9,11 @@ class Header extends StatefulWidget {
 }
 
 class HeaderState extends State<Header> {
-  String state = "default";
-
+  String state = "home";
 
   void resetHeaderState(){
     setState(() {
-      state = "default";
+      state = "home";
     });
   }
 
@@ -31,57 +30,34 @@ class HeaderState extends State<Header> {
 
   Widget build(BuildContext context) {
     preload(context, "images/");
-    double height = (MediaQuery.of(context).size.height * 11.25) / 100;
+    double width = (MediaQuery.of(context).size.width * 25.00) / 100;
+    double height = (MediaQuery.of(context).size.height * 12.25) / 100;
     return Container(
         height: height,
         color: Color(0xFF52504f),
         child: Row(
-          children: <Widget>[
-            GestureDetector(
-                child: Image.asset(
-                    state == "money"
-                        ? "images/dollar_button_tap.png"
-                        : "images/dollar_button.png",                         
-                    height: height,
-                    fit: BoxFit.contain,
-                    gaplessPlayback: true),
-                onTap: () { _handleNavigationTap("money"); }),
-            GestureDetector(
-                child: Image.asset(
-                    state == "health"
-                        ? "images/heart_button_tap.png"
-                        : "images/heart_button.png",
-                    height: height,
-                    fit: BoxFit.contain,
-                    gaplessPlayback: true),
-                onTap: () { _handleNavigationTap("health"); }),
-            GestureDetector(
-                child: Image.asset(
-                    state == "work"
-                        ? "images/briefcase_button_tap.png"
-                        : "images/briefcase_button.png",
-                    height: height,
-                    fit: BoxFit.contain,
-                    gaplessPlayback: true),
-                onTap: () { _handleNavigationTap("work"); }),
-            GestureDetector(
-                child: Image.asset(
-                    state == "social"
-                        ? "images/chatbox_button_tap.png"
-                        : "images/chatbox_button.png",
-                    height: height,
-                    fit: BoxFit.contain,
-                    gaplessPlayback: true),
-                onTap: () { _handleNavigationTap("social"); }),
-            GestureDetector(
-                child: Image.asset(
-                    state == "knowledge"
-                        ? "images/atom_button_tap.png"
-                        : "images/atom_button.png",
-                    height: height,
-                    fit: BoxFit.contain,
-                    gaplessPlayback: true),
-                onTap: () { _handleNavigationTap("knowledge"); }),
+          children: 
+        <Widget>[
+          GestureDetector(child:
+            Image.asset(state == "home" ? "images/home_button_tap.png" : "images/home_button.png",
+              width: width,
+              fit: BoxFit.contain),
+              onTap: () { _handleNavigationTap("home"); }),
+          GestureDetector(child:
+            Image.asset(state == "achievement" ? "images/achievement_button_tap.png" : "images/achievement_button.png",
+              width: width,
+              fit: BoxFit.contain),
+              onTap: () { _handleNavigationTap("achievement"); }),
+          GestureDetector(child:
+            Image.asset(state == "facebook" ? "images/facebook_button_tap.png" : "images/facebook_button.png",
+              width: width,
+              fit: BoxFit.contain),
+              onTap: () { _handleNavigationTap("facebook"); }),
+          GestureDetector(child:
+            Image.asset(state == "settings" ? "images/settings_button_tap.png" : "images/settings_button.png",
+              width: width,
+              fit: BoxFit.contain),
+              onTap: () { _handleNavigationTap("settings"); }),
           ],
         ));
   }

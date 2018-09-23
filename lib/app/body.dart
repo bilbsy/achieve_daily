@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:achieve_daily/app/header.dart';
-import 'package:achieve_daily/app/footer.dart';
+import 'package:flutter/material.dart';
+import 'package:achieve_daily/app/achievements.dart';
+import 'package:achieve_daily/app/home.dart';
 
 class Body extends StatefulWidget {
   Body({Key key}) : super(key: key);
@@ -12,14 +13,23 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
   double height = (MediaQuery.of(context).size.height * 73.8) / 100;
-  Widget header = new Header();
-  Widget footer = new Footer();
+  Widget achievements = new Achievements();
     return Scaffold(
         body: ListView(
           children: [
-            header,
+            GetBody()
           ],
         )
       );
+  }
+}
+
+Widget GetBody(){
+  HeaderState homeState = new HeaderState();
+  switch (homeState.state)
+  {
+    case "home":
+    return Home();
+    break;
   }
 }
