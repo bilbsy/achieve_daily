@@ -1,4 +1,6 @@
-import 'package:achieve_daily/app/header.dart';
+import 'dart:io';
+
+import 'package:achieve_daily/app/navigationBar.dart';
 import 'package:flutter/material.dart';
 
 class Achievements extends StatefulWidget {
@@ -10,7 +12,7 @@ class Achievements extends StatefulWidget {
 
 class _AchievementsState extends State<Achievements> {
     String state = "default";
-    HeaderState header = new HeaderState();
+    NavigationBarState navigationBarState = new NavigationBarState();
     
   void _handleNavigationTap(String stateString) {
     setState(() {
@@ -19,17 +21,22 @@ class _AchievementsState extends State<Achievements> {
   }
 
   Widget build(BuildContext context) {
-    double height = ((MediaQuery.of(context).size.height * 11.25) / 100) / 2;
+    precacheImage(new FileImage(File('Images/') ), context);
+    double height = ((MediaQuery.of(context).size.height * 11.25) / 100);
     return Container(
-      color: Color(0xFF52504f),
-      child: Row(
+      child: Column ( 
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[ Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             GestureDetector(
                 child: Image.asset(
                     state == "money"
                         ? "images/dollar_button_tap.png"
                         : "images/dollar_button.png",                         
-                    height: height,
+                    height: state == "money" ? height : height / 2,
                     fit: BoxFit.contain,
                     gaplessPlayback: true),
                 onTap: () { _handleNavigationTap("money"); }),
@@ -38,7 +45,7 @@ class _AchievementsState extends State<Achievements> {
                     state == "health"
                         ? "images/heart_button_tap.png"
                         : "images/heart_button.png",
-                    height: height,
+                    height: state == "health" ? height : height / 2,
                     fit: BoxFit.contain,
                     gaplessPlayback: true),
                 onTap: () { _handleNavigationTap("health"); }),
@@ -47,7 +54,7 @@ class _AchievementsState extends State<Achievements> {
                     state == "work"
                         ? "images/briefcase_button_tap.png"
                         : "images/briefcase_button.png",
-                    height: height,
+                    height: state == "work" ? height : height / 2,
                     fit: BoxFit.contain,
                     gaplessPlayback: true),
                 onTap: () { _handleNavigationTap("work"); }),
@@ -56,7 +63,7 @@ class _AchievementsState extends State<Achievements> {
                     state == "social"
                         ? "images/chatbox_button_tap.png"
                         : "images/chatbox_button.png",
-                    height: height,
+                    height: state == "social" ? height : height / 2,
                     fit: BoxFit.contain,
                     gaplessPlayback: true),
                 onTap: () { _handleNavigationTap("social"); }),
@@ -65,12 +72,13 @@ class _AchievementsState extends State<Achievements> {
                     state == "knowledge"
                         ? "images/atom_button_tap.png"
                         : "images/atom_button.png",
-                    height: height,
+                    height: state == "knowledge" ? height : height / 2,
                     fit: BoxFit.contain,
                     gaplessPlayback: true),
                 onTap: () { _handleNavigationTap("knowledge"); }),
           ],
-      )
+      )]
+    )
     );
   }
 }

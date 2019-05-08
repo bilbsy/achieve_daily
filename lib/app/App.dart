@@ -1,4 +1,4 @@
-import 'package:achieve_daily/app/header.dart';
+import 'package:achieve_daily/app/navigationBar.dart';
 import 'package:flutter/material.dart';
 import 'package:achieve_daily/app/body.dart';
 import 'package:flutter/services.dart';
@@ -11,9 +11,10 @@ class App extends StatefulWidget {
 }
 
 class AppState extends State<App> with SingleTickerProviderStateMixin {
-  String state = "";
+  String state = "home";
+  PageController _pageController = new PageController();
 
-  handleNavigationTap(String stateString) {
+  void handleNavigationTap(String stateString) {
     setState(() {
       state = stateString;
     });
@@ -22,22 +23,34 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays([]);
-    Widget body = Body();
-    Widget header = Header(handleNavigationTap: handleNavigationTap);
+    Widget body = new Body(this);
+    Widget navigationBar = new NavigationBar(this);
     
     return new Scaffold(
-        appBar: new PreferredSize(
-          preferredSize: Size(50.0, 50.0),
-          child: new Card(
-            margin: EdgeInsets.zero,
-            child: header
-          )),
-        body: ListView(
+        body: PageView(
           children: [
             body
             //ad?
           ],
-        )
-      );
+          controller: _pageController,
+        ),
+        bottomNavigationBar: new Card(
+            margin: EdgeInsets.zero,
+            child: navigationBar,
+      ));
+  }
+
+  
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = new PageController();
+  }
+
+  @override
+  void dispose(){
+    super.dispose();
+    _pageController.dispose();
   }
 }

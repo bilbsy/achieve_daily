@@ -1,40 +1,49 @@
 import 'package:achieve_daily/app/App.dart';
-import 'package:achieve_daily/app/header.dart';
+import 'package:achieve_daily/app/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:achieve_daily/app/achievements.dart';
 import 'package:achieve_daily/app/home.dart';
 
 class Body extends StatefulWidget {
-  Body({Key key}) : super(key: key);
+  final appState;
+  Body(this.appState);
 
   @override
-  _BodyState createState() => _BodyState();
+  BodyState createState() => BodyState(appState: appState);
 }
 
-class _BodyState extends State<Body> {
+class BodyState extends State<Body> {
+  AppState appState;
+
+  BodyState({
+    this.appState
+  });
+
   Widget build(BuildContext context) {
-    Widget achievements = new Achievements();
+    //Widget achievements = new Achievements();
     return Container(
       child: Row(
-        children: <Widget> [Icon(Icons.favorite, size: 150.0, color: Colors.purple)]
+        children: [ getBody() ]
       ),
     );
   }
-}
 
-Widget getBody(){
-  AppState homeState = new AppState();
-  
-  switch (homeState.state)
-  {
-    case "home":
-      return Home();
+  Widget getBody(){
+
+    switch (this.appState.state)
+    {
+      case "achievement":
+        return Achievements();
+        break;
+      case "home":
+        return Home();
+        break;
+      case "settings":
+        return Settings();
       break;
-    case "achievement":
-      return Achievements();
-      break;
-    default:
-      return Home();
-      break;
+      default:
+        return Home();
+        break;
+    }
   }
 }

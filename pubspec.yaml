@@ -27,3 +27,7 @@ flutter:
     - images/chatbox_button_tap.png
     - images/atom_button.png
     - images/atom_button_tap.png
+  fonts:
+    - family: SairaCondensed
+      fonts:
+        - asset: fonts/SairaCondensed-Black.ttf
