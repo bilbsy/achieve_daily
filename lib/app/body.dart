@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:achieve_daily/app/achievements.dart';
 import 'package:achieve_daily/app/home.dart';
 
+
 class Body extends StatefulWidget {
   final appState;
   Body(this.appState);
@@ -41,6 +42,8 @@ class BodyState extends State<Body> {
       case "settings":
         return Settings();
       break;
+      case "facebook":
+        return Home();
       default:
         return Home();
         break;

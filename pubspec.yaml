@@ -1,6 +1,7 @@
 name: achieve_daily
 
 dependencies:
+  flutter_facebook_login: ^2.0.0
   flutter:
     sdk: flutter
 
