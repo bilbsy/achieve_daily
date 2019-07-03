@@ -11,19 +11,12 @@ class _SettingsState extends State<Settings>
 {
   Widget build(BuildContext context) {
     return new Container(
-      color: Colors.grey,
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       child:  SingleChildScrollView(
             child: Column(
               children: <Widget>[
                 Text('Settings', style: new TextStyle(fontFamily: 'SairaCondensed',fontSize: 64.0, color: Colors.white)),
-                getButton("Admin Settings"),
-                getButton("Super Secret Settings"),
-                getButton("Notifications"),
-                getButton("Social Media Settings"),
-                getButton("Recommend Achievement"),
-                getButton("Report Bug"),
                 getButton("Admin Settings"),
                 getButton("Super Secret Settings"),
                 getButton("Notifications"),

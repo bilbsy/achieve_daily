@@ -2,7 +2,6 @@ import 'package:achieve_daily/app/navigationBar.dart';
 import 'package:flutter/material.dart';
 import 'package:achieve_daily/app/body.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
 class App extends StatefulWidget {
   App({Key key}) : super(key: key);

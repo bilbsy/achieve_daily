@@ -31,9 +31,7 @@ class NavigationBarState extends State<NavigationBar> {
   Widget build(BuildContext context) {
     preload(context, "images/");
     double width = (MediaQuery.of(context).size.width * 25.00) / 100;
-    double height = (MediaQuery.of(context).size.height * 11.25) / 100;
     return Container(
-        height: height,
         color: Color(0xFF52504f),
         child: Row(
           children:

@@ -16,6 +16,13 @@
             </list>
           </value>
         </entry>
+        <entry key="flutter_facebook_login">
+          <value>
+            <list>
+              <option value="$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_login-2.0.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="meta">
           <value>
             <list>
@@ -48,6 +55,7 @@
     </properties>
     <CLASSES>
       <root url="file://$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/collection-1.14.11/lib" />
+      <root url="file://$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_login-2.0.0/lib" />
       <root url="file://$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/meta-1.1.6/lib" />
       <root url="file://$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/typed_data-1.1.6/lib" />
       <root url="file://$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.0.8/lib" />

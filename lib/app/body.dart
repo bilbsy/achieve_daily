@@ -23,6 +23,7 @@ class BodyState extends State<Body> {
   Widget build(BuildContext context) {
     //Widget achievements = new Achievements();
     return Container(
+      decoration: new BoxDecoration(color: Colors.black87),
       child: Row(
         children: [ getBody() ]
       ),
