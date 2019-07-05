@@ -1,3 +1,4 @@
+import 'package:achieve_daily/app/createAchievement.dart';
 import 'package:achieve_daily/app/navigationBar.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -31,26 +32,45 @@ class _AchievementsState extends State<Achievements> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              SingleChildScrollView(
-                  child: StreamBuilder(
-                stream:
-                    Firestore.instance.collection('achievements').snapshots(),
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) return const Text('Loading...');
+              Column(
+                children: <Widget>[
+                  SingleChildScrollView(
+                      child: StreamBuilder(
+                    stream: Firestore.instance
+                        .collection('achievements')
+                        .snapshots(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) return const Text('Loading...');
 
-                  var drawerRows = <Widget>[];
-                  var achievements = snapshot.data.documents;
-                  if (snapshot.data.documents.length != 0) {
-                    for (int i = 0; i < achievements.length; i++) {
-                      if (achievements[i]['category'] == state)
-                        drawerRows.add(
-                            _buildAchievementItem(context, achievements[i]));
-                    }
-                  }
-                  return Column(
-                    children: drawerRows);
-                },
-              )),
+                      var drawerRows = <Widget>[];
+                      var achievements = snapshot.data.documents;
+                      if (snapshot.data.documents.length != 0) {
+                        for (int i = 0; i < achievements.length; i++) {
+                          if (achievements[i]['category'] == state)
+                            drawerRows.add(_buildAchievementItem(
+                                context, achievements[i]));
+                        }
+                      }
+                      return Column(children: drawerRows);
+                    },
+                  )),
+                  InkWell(
+                      child: new Container(
+                    margin: EdgeInsets.all(10.0),
+                    width: MediaQuery.of(context).size.width,
+                    decoration: new BoxDecoration(
+                      color: Colors.blueAccent,
+                      border: new Border.all(color: Colors.cyan, width: 2.0),
+                      borderRadius: new BorderRadius.circular(10.0),
+                    ),
+                    padding: const EdgeInsets.all(5.0),
+                    child: Text('Create New Achievement',
+                        style: Theme.of(context).textTheme.display1),
+                  ),
+                  onTap: () { CreateAchievement(); },
+                  ),
+                ],
+              ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.end,

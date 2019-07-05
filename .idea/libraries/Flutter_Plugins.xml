@@ -1,7 +1,10 @@
 <component name="libraryTable">
   <library name="Flutter Plugins" type="FlutterPluginsLibraryType">
     <CLASSES>
-      <root url="file://$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_login-2.0.0" />
+      <root url="file://$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_login-2.0.1" />
+      <root url="file://$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_database-1.1.0+1" />
+      <root url="file://$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.2.5+1" />
+      <root url="file://$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore-0.8.2+3" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

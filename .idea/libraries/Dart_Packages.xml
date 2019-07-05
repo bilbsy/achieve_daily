@@ -2,10 +2,38 @@
   <library name="Dart Packages" type="DartPackagesLibraryType">
     <properties>
       <option name="packageNameToDirsMap">
+        <entry key="cloud_firestore">
+          <value>
+            <list>
+              <option value="$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore-0.8.2+3/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="collection">
           <value>
             <list>
               <option value="$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/collection-1.14.11/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="enum_to_string">
+          <value>
+            <list>
+              <option value="$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/enum_to_string-1.0.7/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="firebase_core">
+          <value>
+            <list>
+              <option value="$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.2.5+1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="firebase_database">
+          <value>
+            <list>
+              <option value="$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_database-1.1.0+1/lib" />
             </list>
           </value>
         </entry>
@@ -19,7 +47,7 @@
         <entry key="flutter_facebook_login">
           <value>
             <list>
-              <option value="$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_login-2.0.0/lib" />
+              <option value="$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_login-2.0.1/lib" />
             </list>
           </value>
         </entry>
@@ -54,8 +82,12 @@
       </option>
     </properties>
     <CLASSES>
+      <root url="file://$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore-0.8.2+3/lib" />
       <root url="file://$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/collection-1.14.11/lib" />
-      <root url="file://$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_login-2.0.0/lib" />
+      <root url="file://$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/enum_to_string-1.0.7/lib" />
+      <root url="file://$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.2.5+1/lib" />
+      <root url="file://$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_database-1.1.0+1/lib" />
+      <root url="file://$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_facebook_login-2.0.1/lib" />
       <root url="file://$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/meta-1.1.6/lib" />
       <root url="file://$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/typed_data-1.1.6/lib" />
       <root url="file://$USER_HOME$/Downloads/flutter_windows_v0.5.1-beta/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.0.8/lib" />
