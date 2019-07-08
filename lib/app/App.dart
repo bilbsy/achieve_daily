@@ -25,22 +25,43 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
     SystemChrome.setEnabledSystemUIOverlays([]);
     Widget body = new Body(this);
     Widget navigationBar = new NavigationBar(this);
-    
-    return new Scaffold(
-        body: PageView(
-          children: [
-            body
-            //ad?
-          ],
-          controller: _pageController,
-        ),
-        bottomNavigationBar: new Card(
-            margin: EdgeInsets.zero,
-            child: navigationBar,
-      ));
+
+    return new WillPopScope(
+        onWillPop: _onWillPop,
+        child: Scaffold(
+            body: PageView(
+              children: [
+                body
+                //ad?
+              ],
+              controller: _pageController,
+            ),
+            bottomNavigationBar: new Card(
+              margin: EdgeInsets.zero,
+              child: navigationBar,
+            )));
   }
 
-  
+  Future<bool> _onWillPop() {
+    return showDialog(
+          context: context,
+          builder: (context) => new AlertDialog(
+            title: new Text('Are you sure?'),
+            content: new Text('Do you want to exit an App'),
+            actions: <Widget>[
+              new FlatButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: new Text('No'),
+              ),
+              new FlatButton(
+                onPressed: () => Navigator.of(context).pop(true),
+                child: new Text('Yes'),
+              ),
+            ],
+          ),
+        ) ??
+        false;
+  }
 
   @override
   void initState() {
@@ -49,7 +70,7 @@ class AppState extends State<App> with SingleTickerProviderStateMixin {
   }
 
   @override
-  void dispose(){
+  void dispose() {
     super.dispose();
     _pageController.dispose();
   }

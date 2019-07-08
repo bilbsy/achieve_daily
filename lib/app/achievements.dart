@@ -1,5 +1,6 @@
 import 'package:achieve_daily/app/createAchievement.dart';
 import 'package:achieve_daily/app/navigationBar.dart';
+import 'package:achieve_daily/app/viewAchievement.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -13,12 +14,20 @@ class Achievements extends StatefulWidget {
 
 class _AchievementsState extends State<Achievements> {
   String state = "default";
+  String viewAchievementState = "";
   NavigationBarState navigationBarState = new NavigationBarState();
   final databaseReference = FirebaseDatabase.instance.reference();
 
   void _handleNavigationTap(String stateString) {
     setState(() {
       state = stateString;
+      viewAchievementState = "";
+    });
+  }
+
+  void _handleViewTap(String viewAchievementStateString) {
+    setState(() {
+      viewAchievementState = viewAchievementStateString;
     });
   }
 
@@ -32,45 +41,7 @@ class _AchievementsState extends State<Achievements> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              Column(
-                children: <Widget>[
-                  SingleChildScrollView(
-                      child: StreamBuilder(
-                    stream: Firestore.instance
-                        .collection('achievements')
-                        .snapshots(),
-                    builder: (context, snapshot) {
-                      if (!snapshot.hasData) return const Text('Loading...');
-
-                      var drawerRows = <Widget>[];
-                      var achievements = snapshot.data.documents;
-                      if (snapshot.data.documents.length != 0) {
-                        for (int i = 0; i < achievements.length; i++) {
-                          if (achievements[i]['category'] == state)
-                            drawerRows.add(_buildAchievementItem(
-                                context, achievements[i]));
-                        }
-                      }
-                      return Column(children: drawerRows);
-                    },
-                  )),
-                  InkWell(
-                      child: new Container(
-                    margin: EdgeInsets.all(10.0),
-                    width: MediaQuery.of(context).size.width,
-                    decoration: new BoxDecoration(
-                      color: Colors.blueAccent,
-                      border: new Border.all(color: Colors.cyan, width: 2.0),
-                      borderRadius: new BorderRadius.circular(10.0),
-                    ),
-                    padding: const EdgeInsets.all(5.0),
-                    child: Text('Create New Achievement',
-                        style: Theme.of(context).textTheme.display1),
-                  ),
-                  onTap: () { CreateAchievement(); },
-                  ),
-                ],
-              ),
+              _viewAchievement(context),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -135,26 +106,93 @@ class _AchievementsState extends State<Achievements> {
             ]));
   }
 
+  Widget _viewAchievement(BuildContext context) {
+    if (viewAchievementState == "") {
+      return Column(
+        children: <Widget>[
+          SingleChildScrollView(
+              child: StreamBuilder(
+            stream: Firestore.instance.collection('achievements').snapshots(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) return const Text('Loading...');
+
+              var drawerRows = <Widget>[];
+              var achievements = snapshot.data.documents;
+              if (snapshot.data.documents.length != 0) {
+                for (int i = 0; i < achievements.length; i++) {
+                  if (achievements[i]['category'] == state)
+                    drawerRows
+                        .add(_buildAchievementItem(context, achievements[i]));
+                }
+              }
+              return Column(children: drawerRows);
+            },
+          )),
+          InkWell(
+            child: new Container(
+              margin: EdgeInsets.all(5.0),
+              width: MediaQuery.of(context).size.width,
+              decoration: new BoxDecoration(
+                color: Colors.black54,
+                border: new Border.all(color: Colors.white24, width: 2.0),
+              ),
+              padding: const EdgeInsets.all(5.0),
+              child: Text('Create New Achievement',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 12, color: Colors.white70)),
+            ),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CreateAchievement()));
+            },
+          ),
+        ],
+      );
+    } else {
+      return Expanded(child: ViewAchievement(this.viewAchievementState));
+    }
+  }
+
   Widget _buildAchievementItem(
       BuildContext context, DocumentSnapshot document) {
     return new InkWell(
       child: new Container(
-          margin: EdgeInsets.all(10.0),
+          margin: EdgeInsets.all(5.0),
           width: MediaQuery.of(context).size.width,
           decoration: new BoxDecoration(
-            color: Colors.blueAccent,
-            border: new Border.all(color: Colors.cyan, width: 2.0),
-            borderRadius: new BorderRadius.circular(10.0),
+            color: Colors.black54,
+            border: new Border.all(color: Colors.white24, width: 2.0),
           ),
           padding: const EdgeInsets.all(5.0),
-          child: Row(children: <Widget>[
-            Text(document['points'].toString(),
-                style: Theme.of(context).textTheme.display1),
-            Text(
-              document["name"],
-              style: Theme.of(context).textTheme.headline,
-            ),
+          child: Column(children: <Widget>[
+            Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  document["name"],
+                  style: TextStyle(fontSize: 12, color: Colors.amber),
+                )),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Expanded(
+                    flex: 2,
+                    child: Text(document['description'].toString(),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
+                        style: TextStyle(fontSize: 12, color: Colors.white30)),
+                  ),
+                  Expanded(
+                    child: Text(
+                      'Points: ' + document['points'].toString(),
+                      style: TextStyle(fontSize: 12, color: Colors.white70),
+                      textAlign: TextAlign.end,
+                    ),
+                  ),
+                ])
           ])),
+      onTap: () {
+        _handleViewTap(document.documentID);
+      },
     );
   }
 }
